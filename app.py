@@ -67,7 +67,17 @@ def get_memes():
     result = memes_schema.dump(all_memes)
 
     return jsonify(result)
+
+
+@app.route("/meme/<id>", methods=["GET"])
+def get_meme(id):
+    meme = Meme.query.get(id)
+
+    return meme_schema.jsonify(meme)
+
+
 # PUT
+
 # DELETE
 
 
