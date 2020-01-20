@@ -68,7 +68,7 @@ def get_memes():
 
     return jsonify(result)
 
-
+# GET BY ID
 @app.route("/meme/<id>", methods=["GET"])
 def get_meme(id):
     meme = Meme.query.get(id)
@@ -90,7 +90,17 @@ def update_meme(id):
     db.session.commit()
 
     return meme_schema.jsonify(meme)
+
+
 # DELETE
+@app.route("/delete-meme/<id>", methods=["DELETE"])
+def delete_meme(id):
+    meme = Meme.query.get(id)
+
+    db.session.delete(meme)
+    db.session.commit()
+
+    return jsonify("RECORD DELETED")
 
 
 if __name__ == "__main__":
