@@ -100,7 +100,7 @@ def delete_meme(id):
     db.session.delete(meme)
     db.session.commit()
 
-    return jsonify("RECORD DELETED")
+    return jsonify("MEME DELETED")
 
 
 if __name__ == "__main__":
